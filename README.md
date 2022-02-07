@@ -1,2 +1,2 @@
-# CEN-Project
-Change the title once we have a project
+# Concord
+ Live lecture delivery platform with integrated note-taking and student quizzing resources
