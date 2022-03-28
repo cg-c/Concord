@@ -1,0 +1,46 @@
+body {
+    background-color: #3d3b40
+}
+
+.mainTitle {
+    font-size: 60px;
+    color: #eaf5f1;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    padding: 50px;
+}
+
+.login {
+    font-size: 60px;
+    color: #eaf5f1;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    padding-top: 200px;
+    padding-bottom: 50px;
+}
+
+.textCenter {
+    margin: auto;
+    text-align: center;
+}
+
+.buttonCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.brand {
+    height: 10%;
+    width: 10%;
+}
+
+footer {
+    margin-top: auto;
+}

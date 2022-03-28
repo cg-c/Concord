@@ -1,0 +1,31 @@
+{
+  "name": "concord",
+  "version": "1.0.0",
+  "description": "Live lecture delivery platform with integrated note-taking and student quizzing resources",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cg-c/Concord.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cg-c/Concord/issues"
+  },
+  "homepage": "https://github.com/cg-c/Concord#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "google-auth-library": "^7.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

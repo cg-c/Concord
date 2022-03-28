@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="209653197439-37he78nu4hktn3r649hlupracdp1d0i5.apps.googleusercontent.com">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+        <title>Login</title>
+    </head>
+    <body>
+        
+        <h1 class="login textCenter"> Login </h1>
+        <div class="g-signin2 buttonCenter" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+        <script>
+            function onSignIn(googleUser) {
+                var id_token = googleUser.getAuthResponse().id_token;
+                var xhr = new XMLHttpRequest();
+                
+                xhr.open('POST', '/login');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function() {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    if (xhr.responseText == 'success') {
+                        signOut();
+                        location.assign('/courses');
+                    }
+                };
+
+                xhr.send(JSON.stringify({token: id_token}));
+            }
+        </script>
+
+        <div class="buttonCenter" style="padding:20px;padding-bottom:18%;"><button><a href="#" onclick="signOut();">Sign out</a></button></div >
+        <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+            }
+        </script>
+
+    </body>
+
+    <footer>
+        <img class="imgCenter brand" src="images/concord_logo9_long.png" alt="Concord Brand">
+    </footer>
+
+</html>
