@@ -13,11 +13,11 @@ export const handleUpload = (file) => {
         return snapshot.ref.getDownloadURL().then(url => {
         try{
             const d = Date.now();
-            const fileRef =  addDoc(collection(db, "files"),{
-            name: file.name,
-            size: file.size,
-            date: d,
-            url: url
+            const fileRef =  addDoc(collection(db, "files"), {
+                name: file.name,
+                size: file.size,
+                date: d,
+                url: url
             })
             console.log("Document written with ID: ", fileRef.id);
         } catch (e) {
