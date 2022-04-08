@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Client, LocalStream } from 'ion-sdk-js';
 import { IonSFUJSONRPCSignal } from 'ion-sdk-js/lib/signal/json-rpc-impl';
+import { Routes, Route, Link } from "react-router-dom";
+import FileUpload from "./uploadFiles"
 
 
-const App = () =>{
+const Call = () =>{
 
   const pubVideo = useRef();
   const subVideo = useRef();
@@ -93,6 +95,18 @@ const App = () =>{
     ) : (
       <video id="subVideo" className="bg-black" controls ref={subVideo}></video>
     )}
+    </div>
+  );
+}
+
+
+const App = () =>{
+  return (
+<div className="App">
+      <Routes>
+        <Route path="/" element={<Call />} />
+        <Route path="upload" element={<FileUpload />} />
+      </Routes>
     </div>
   );
 }
