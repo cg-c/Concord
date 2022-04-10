@@ -1,33 +1,34 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { auth } from '../firebase/firebaseConfig';
-import { signInWithCredential, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import GoogleButton from 'react-google-button';
+import { useUserAuth } from '../context/userAuthContext';
 
 
-function Login() {
-    const signInWithGoogle = () =>{
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-        .then((result) => {
-            const fName = result.user.displayName;
-            const email = result.user.email;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    }
+const Login = () => {
+    const {googleSignIn} = useUserAuth();
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
+    const handleGoogleSignIn = async (e) => {
+        e.preventDefault();
+        
+        try {
+          await googleSignIn();
+          navigate("/course");
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
 
     return (
-        <div className="App">
-            <button onClick={signInWithGoogle}> Sign In With Google </button>
-        </div>
-    )
-}
+        <>
+            <GoogleButton onClick={handleGoogleSignIn} />
+        </>
+    );
+};
 
 export default Login;
