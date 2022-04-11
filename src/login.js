@@ -4,6 +4,7 @@ import Login from './components/googleLogin';
 import Course from './components/course';
 import ProtectedRoute from './components/protected';
 import CreateUser from './components/option';
+import App from './components/video';
 import { UserAuthContextProvider } from './context/userAuthContext';
 
 function SignInRoute() {
@@ -24,6 +25,12 @@ function SignInRoute() {
                             <Route path="/createUser" element={ 
                                 <ProtectedRoute>
                                     <CreateUser /> 
+                                </ProtectedRoute> 
+                            } />
+
+                            <Route path="/video" element={ 
+                                <ProtectedRoute>
+                                    <App /> 
                                 </ProtectedRoute> 
                             } />
 
