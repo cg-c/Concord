@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, ThemeProvider } from 'react-bootstrap';
 import { StyledContainer } from './components/styles/Container.styled';
 import Login from './components/googleLogin';
 import Course from './components/course';
@@ -17,22 +17,22 @@ function SignInRoute() {
                         <Routes>
                             <Route path="/" element={<Login />} />
 
-                            <Route path="/course" element={ 
+                            <Route path="/course" element={
                                 <ProtectedRoute>
-                                    <Course /> 
-                                </ProtectedRoute> 
+                                    <Course />
+                                </ProtectedRoute>
                             } />
 
-                            <Route path="/createUser" element={ 
+                            <Route path="/createUser" element={
                                 <ProtectedRoute>
-                                    <CreateUser /> 
-                                </ProtectedRoute> 
+                                    <CreateUser />
+                                </ProtectedRoute>
                             } />
 
-                            <Route path="/video" element={ 
+                            <Route path="/video" element={
                                 <ProtectedRoute>
-                                    <App /> 
-                                </ProtectedRoute> 
+                                    <App />
+                                </ProtectedRoute>
                             } />
 
                         </Routes>

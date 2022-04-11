@@ -3,9 +3,9 @@ import  { Container } from 'react-bootstrap';
 
 export const StyledContainer = styled(Container)`
     display: flex;
-    margin: 30px;
+    background-color: ${p => p.theme.primary};
+    margin: 0;
     justify-content: center;
-    align-items: center;
-    background-color: grey;
-    width: auto;
+    min-height: 100vh;
+    min-width: 100vw;
 `;

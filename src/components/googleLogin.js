@@ -5,6 +5,8 @@ import 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import GoogleButton from 'react-google-button';
+import { PageHeader } from './styles/PageHeader.styled';
+import { FooterLogo } from './styles/FooterLogo.styled';
 import { useUserAuth } from '../context/userAuthContext';
 
 
@@ -30,7 +32,11 @@ const Login = () => {
 
     return (
         <>
+            <PageHeader> Login </PageHeader>
             <GoogleButton onClick={handleGoogleSignIn} />
+            <FooterLogo>
+              <img src="LongLogo.png"></img>
+            </FooterLogo>
         </>
     );
 };

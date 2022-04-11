@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './App';
 import SignInRoute from './login';
-import { Theme } from './components/styles/Theme.styled';
+import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
@@ -9,14 +9,21 @@ import { createRoot } from 'react-dom/client';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+// theme elements to be accessed via any Styled-Component's props
+const theme = {
+  primary: "#3d3b40",
+  secondary: "#cbd2d0",
+  text: "#eaf5f1", 
+  headingFont: "'Nunito', sans-serif"
+};
+
 root.render(
   <React.StrictMode>
-    {/*
-      Figure out theme in Styled Components
-    */}
-    <Router>
-      <SignInRoute />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <SignInRoute />
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

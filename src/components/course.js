@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useUserAuth } from '../context/userAuthContext';
 import { useNavigate } from 'react-router-dom';
+import { PageHeader } from './styles/PageHeader.styled';
 
 const Course = () => {
     const {user, logOut} = useUserAuth();
@@ -23,9 +24,9 @@ const Course = () => {
 
     return (
         <>
-            <h1 style={{fontSize: '50px'}}>
+            <PageHeader style={{fontSize: '50px'}}>
                 Hello
-            </h1>
+            </PageHeader>
 
             <div>
                 <Button onClick={handleLogOut}>
