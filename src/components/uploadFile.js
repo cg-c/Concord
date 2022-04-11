@@ -68,7 +68,7 @@ const FileUpload = () =>{
         try{
             const blobURL = URL.createObjectURL(file);
             const blob =  fetch(blobURL).then((r) => r.blob());
-            const storageRef = ref(storage, `documents/${file.name}`);
+            const storageRef = ref(storage, `${user.email}/${file.name}`);
             const uploadTask = uploadBytesResumable(storageRef, blob);
             uploadTask.on('state_changed', 
                 (snapshot) =>{},
