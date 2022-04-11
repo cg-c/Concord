@@ -1,8 +1,11 @@
 import React, {useMemo, useCallback} from 'react';
 import {storage, db} from "./firebase/firebaseConfig";
-import {collection, addDoc} from "firebase/firestore"; 
+import {collection, addDoc, query, getDocs} from "firebase/firestore"; 
 import {useDropzone} from "react-dropzone";
 import {ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import 'react-keyed-file-browser/dist/react-keyed-file-browser.css';
+import 'font-awesome/css/font-awesome.min.css'
+import FileBrowser, {Icons} from 'react-keyed-file-browser'
 
 const baseStyle = {
     flex: 1,
@@ -35,6 +38,26 @@ const baseStyle = {
 
 
 const FileUpload = () =>{
+
+    const generateFiles = () => {
+    
+        var files = [];
+      
+        function addFiletoFiles(name, date, size){
+          files.push({key : name, modified : date, size : size});
+        }
+      
+          const q = query(collection(db, "files"));
+            getDocs(q).then((querySnapshot) => {    
+              querySnapshot.forEach((doc) => {
+                if(!querySnapshot.empty){
+                  addFiletoFiles(doc.data().name, doc.data().date, doc.data().size);
+                }
+            });
+          });
+          return files;
+        }
+
     const handleUpload = (file) => {
         try{
             const blobURL = URL.createObjectURL(file);
@@ -100,15 +123,21 @@ const FileUpload = () =>{
     
 
     return (
+        <>
         <div className="container">
-        <div {...getRootProps({style})}> 
-            <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
-            <button className="bg-blue-500 px-4 py-2 text-white rounded-lg mr-5" type="button" onClick={open}>
-            Open File Dialog
-            </button>
+            <div {...getRootProps({style})}> 
+                <input {...getInputProps()} />
+                <p>Drag 'n' drop some files here, or click to select files</p>
+                <button className="bg-blue-500 px-4 py-2 text-white rounded-lg mr-5" type="button" onClick={open}>
+                Open File Dialog
+                </button>
+            </div>
         </div>
-        </div> 
+        <div><FileBrowser 
+            files = {generateFiles()}
+            icons = {Icons.FontAwesome(4)}
+        /></div> 
+        </>
     );
 };
 
