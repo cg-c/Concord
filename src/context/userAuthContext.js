@@ -1,29 +1,43 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React from 'react';
+import { createContext, Profiler, useContext, useEffect, useState } from 'react';
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase/firebaseConfig';
+import { auth, db } from '../firebase/firebaseConfig';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { collection, addDoc, setDoc, doc } from "firebase/firestore"; 
+import { useNavigate } from 'react-router-dom';
 
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({children}) {
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
 
     function googleSignIn() {
         const googProv = new GoogleAuthProvider();
         return signInWithPopup(auth, googProv);
-        // .then((result) => {
-        //     const credential = GoogleAuthProvider.credentialFromResult(result);
-        //     const token = credential.accessToken;
-        //     const user = result.user;
-        //   }).catch((error) => {
-        //     const errorCode = error.code;
-        //     const errorMessage = error.message;
-        //     const email = error.email;
-        //     const credential = GoogleAuthProvider.credentialFromError(error);
-        //   });
     }
 
     function logOut() {
         return signOut(auth);
+    }
+
+
+    // I DONT KNOW HOW TO SAVE THE TEACHER BOOL
+    function saveUser(teachBool) { 
+
+        try {
+            const docRef = doc(db, "User", user.email)
+            setDoc(docRef, {
+                fullName: user.displayName,
+                email: user.email
+                //teacher: teachBool
+            });
+            navigate("/course");
+        }
+        catch(e) {
+            console.log(e.message);
+        }
     }
 
     useEffect(() => {
@@ -36,7 +50,7 @@ export function UserAuthContextProvider({children}) {
     }, []);
 
     return (
-        <userAuthContext.Provider value={{user, logOut, googleSignIn}}> 
+        <userAuthContext.Provider value={{user, logOut, googleSignIn, saveUser}}> 
             {children} 
         </userAuthContext.Provider>
     ); 

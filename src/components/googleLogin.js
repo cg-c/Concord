@@ -17,8 +17,13 @@ const Login = () => {
         e.preventDefault();
         
         try {
-          await googleSignIn();
-          navigate("/course");
+        const user = await googleSignIn();
+        console.log(user);
+
+            // if user exists --> /course
+            // else --> /createUser
+
+          navigate("/createUser");
         } catch (error) {
           console.log(error.message);
         }

@@ -16,7 +16,9 @@ const Course = () => {
 
     return (
         <>
-            <div> Hello </div>
+        <h1>
+            Hello {user}
+        </h1>
             <div>
                 <Button onClick={handleLogOut}>
                     Log Out
