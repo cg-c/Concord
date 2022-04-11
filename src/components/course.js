@@ -4,7 +4,8 @@ import { useUserAuth } from '../context/userAuthContext';
 import { useNavigate } from 'react-router-dom';
 import { PageHeader } from './styles/PageHeader.styled';
 import { db } from '../firebase/firebaseConfig';
-import {collection, doc, getDoc, where} from 'firebase/firestore';
+import { doc, getDoc} from 'firebase/firestore';
+import FileUpload from './uploadFile'
 
 const Course = () => {
     const {user, logOut} = useUserAuth();
@@ -50,6 +51,7 @@ const Course = () => {
             <Button onClick={handleNavVideo}>
                 Launch Video
             </Button>
+            <FileUpload />
         </>
     )
 
