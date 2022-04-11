@@ -11,6 +11,11 @@ const CreateUser = () => {
     var teachbool;
     // FIX SAVING THIS VAR
 
+    const handleOptionSubmit = async() => {
+        await saveUser(teachbool);
+        navigate("/course");
+    }
+
     return (
         <form>
             <p> Are you a teacher or a student? </p>

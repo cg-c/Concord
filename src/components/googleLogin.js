@@ -21,9 +21,6 @@ const Login = () => {
         try {
         const user = await googleSignIn();
 
-            // if user exists --> /course
-            // else --> /createUser
-
           navigate("/createUser");
         } catch (error) {
           console.log(error.message);
