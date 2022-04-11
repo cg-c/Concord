@@ -1,8 +1,3 @@
-/*
-    I followed this tutorial https://www.youtube.com/watch?v=6kgitEWTxac
-*/
-
-
 import React from 'react';
 import { createContext, Profiler, useContext, useEffect, useState } from 'react';
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
