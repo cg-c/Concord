@@ -1,3 +1,8 @@
+/*
+    I followed this tutorial https://www.youtube.com/watch?v=6kgitEWTxac
+*/
+
+
 import React from 'react';
 import { createContext, Profiler, useContext, useEffect, useState } from 'react';
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -24,14 +29,14 @@ export function UserAuthContextProvider({children}) {
 
 
     // I DONT KNOW HOW TO SAVE THE TEACHER BOOL
-    function saveUser(teachBool) { 
+    function saveUser(teachbool) { 
 
         try {
             const docRef = doc(db, "User", user.email)
             setDoc(docRef, {
                 fullName: user.displayName,
                 email: user.email
-                //teacher: teachBool
+                //teacher: teachbool
             });
             navigate("/course");
         }

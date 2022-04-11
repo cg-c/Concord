@@ -18,7 +18,6 @@ const Login = () => {
         
         try {
         const user = await googleSignIn();
-        console.log(user);
 
             // if user exists --> /course
             // else --> /createUser
