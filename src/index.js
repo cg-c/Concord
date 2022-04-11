@@ -1,6 +1,7 @@
 import React from 'react';
 import App from './App';
 import SignInRoute from './login';
+import { Theme } from './components/styles/Theme.styled';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
@@ -10,6 +11,9 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+    {/*
+      Figure out theme in Styled Components
+    */}
     <Router>
       <SignInRoute />
     </Router>

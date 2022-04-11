@@ -23,7 +23,7 @@ const Course = () => {
 
     return (
         <>
-            <h1>
+            <h1 style={{fontSize: '50px'}}>
                 Hello
             </h1>
 

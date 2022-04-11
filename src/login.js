@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import { StyledContainer } from './components/styles/Container.styled';
 import Login from './components/googleLogin';
 import Course from './components/course';
 import ProtectedRoute from './components/protected';
@@ -9,7 +10,7 @@ import { UserAuthContextProvider } from './context/userAuthContext';
 
 function SignInRoute() {
     return (
-        <Container>
+        <StyledContainer>
             <Row>
                 <Col>
                     <UserAuthContextProvider>
@@ -38,7 +39,7 @@ function SignInRoute() {
                     </UserAuthContextProvider>
                 </Col>
             </Row>
-        </Container>
+        </StyledContainer>
     );
 }
 
