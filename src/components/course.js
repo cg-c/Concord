@@ -25,10 +25,10 @@ const Course = () => {
     }
 
     function greetUser(){
-        const docRef = doc(db, 'User', user.email);
+        const docRef = doc(db, 'User', user.email);     //gets current user's database object
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-            document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName); 
+            document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName);  //set greeting header to include user's name
           } else {
             console.log("No such document!");
         }});
