@@ -11,8 +11,6 @@ import { UserAuthContextProvider } from './context/userAuthContext';
 function SignInRoute() {
     return (
         <StyledContainer>
-            <Row>
-                <Col>
                     <UserAuthContextProvider>
                         <Routes>
                             <Route path="/" element={<Login />} />
@@ -37,8 +35,6 @@ function SignInRoute() {
 
                         </Routes>
                     </UserAuthContextProvider>
-                </Col>
-            </Row>
         </StyledContainer>
     );
 }

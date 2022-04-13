@@ -38,8 +38,7 @@ const Course = () => {
 
     return (
         <>
-            <PageHeader id = "Greetings" style={{fontSize: '50px'}}>
-                Hello 
+            <PageHeader id = "Greetings"> 
             </PageHeader>
 
             <div>
