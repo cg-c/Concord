@@ -5,8 +5,8 @@ export const PageHeader = styled.h1`
     color: ${props => props.theme.text};
     font-size: 50px;
     font-family: ${props => props.theme.headingFont};
-    margin-top: 10%;
-    margin-bottom: 8%;
+    margin-top: 50px;
+    margin-bottom: 70px;
     letter-spacing: 2px;
     justify-content: center;
     align-items: center;

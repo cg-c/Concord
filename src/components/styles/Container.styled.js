@@ -5,6 +5,7 @@ import  { Container } from 'react-bootstrap';
 export const StyledContainer = styled(Container)`
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     background-color: ${p => p.theme.primary};
     margin: 0;
     justify-content: start;

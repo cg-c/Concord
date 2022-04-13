@@ -14,6 +14,14 @@ const Login = () => {
     const {googleSignIn} = useUserAuth();
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const buttonStyle = {
+      display: "flex",
+      backgroundColor: "#fff",
+      color: "#3d3b40",
+      borderRadius: "8px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
 
     const handleGoogleSignIn = async (e) => {
         e.preventDefault();
@@ -29,8 +37,8 @@ const Login = () => {
 
     return (
         <>
-            <PageHeader> Login </PageHeader>
-            <GoogleButton onClick={handleGoogleSignIn} />
+            <PageHeader> login </PageHeader>
+            <GoogleButton onClick={handleGoogleSignIn} style={buttonStyle} />
             <FooterLogo>
               <img src="LongLogo.png"></img>
             </FooterLogo>
