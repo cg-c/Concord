@@ -30,13 +30,14 @@ export function UserAuthContextProvider({children}) {
             const docRef = doc(db, "User", user.email)
             setDoc(docRef, {
                 fullName: user.displayName,
-                email: user.email
-                //teacher: teachbool
+                email: user.email,
+                teacher: teachbool
             });
-            navigate("/course");
+            //navigate("/course");
         }
         catch(e) {
             console.log(e.message);
+            navigate("/");
         }
     }
 
