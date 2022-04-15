@@ -13,7 +13,7 @@ const CreateUser = () => {
 
     const handleOptionSubmit = async() => {
         await saveUser(teachbool);
-        navigate("/course");
+        navigate("/courses");
     }
 
     return (

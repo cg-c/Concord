@@ -33,7 +33,7 @@ export function UserAuthContextProvider({children}) {
                 email: user.email
                 //teacher: teachbool
             });
-            navigate("/course");
+            navigate("/courses");
         }
         catch(e) {
             console.log(e.message);

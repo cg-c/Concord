@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Row, Col, ThemeProvider } from 'react-bootstrap';
 import { StyledContainer } from './components/styles/Container.styled';
 import Login from './components/googleLogin';
-import Course from './components/course';
+import Course from './components/courses';
 import ProtectedRoute from './components/protected';
 import CreateUser from './components/option';
 import App from './components/video';
@@ -15,7 +15,7 @@ function SignInRoute() {
                         <Routes>
                             <Route path="/" element={<Login />} />
 
-                            <Route path="/course" element={
+                            <Route path="/courses" element={
                                 <ProtectedRoute>
                                     <Course />
                                 </ProtectedRoute>

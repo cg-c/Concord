@@ -41,7 +41,7 @@ const Course = () => {
 
     return (
         <>
-            {/* Move this and greeting function to dedicated landing page 
+            {/* Move this V and greeting function to dedicated landing page 
             <PageHeader id = "Greetings"/>*/}
             <PageHeader>
                 Courses
@@ -49,7 +49,7 @@ const Course = () => {
 
             <CourseContainer>
                 <CourseButton>
-                    Course 1
+                    {/* parse course names/number of courses in function on this page */}
                 </CourseButton>
                 <CourseButton >
                     Course 2
@@ -63,9 +63,9 @@ const Course = () => {
                 <CourseButton >
                     Course 5
                 </CourseButton>
-                {/* <CourseButton >
+                <CourseButton >
                     Course 6
-                </CourseButton> */}
+                </CourseButton>
             </CourseContainer>
 
             {/* <div>
