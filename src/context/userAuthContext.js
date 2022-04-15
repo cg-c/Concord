@@ -22,8 +22,6 @@ export function UserAuthContextProvider({children}) {
         return signOut(auth);
     }
 
-
-    // I DONT KNOW HOW TO SAVE THE TEACHER BOOL
     function saveUser(teachbool) { 
 
         try {
@@ -33,7 +31,6 @@ export function UserAuthContextProvider({children}) {
                 email: user.email,
                 teacher: teachbool
             });
-            //navigate("/course");
         }
         catch(e) {
             console.log(e.message);

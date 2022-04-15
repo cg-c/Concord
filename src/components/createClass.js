@@ -57,10 +57,9 @@ const CreateClass = () => {
                 />
             </div>
 
-
-                <Button onClick={addClass}>
-                    Create
-                </Button>
+            <Button onClick={addClass}>
+                Create
+            </Button>
 
 
         </div>

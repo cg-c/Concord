@@ -5,13 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 const CreateUser = () => {
-
-
     const {saveUser} = useUserAuth();
     const navigate = useNavigate();
     const [ts, setTs] = useState("");
-    // var teachbool;
-    // FIX SAVING THIS VAR
+
 
     const handleOptionSubmit = async() => {
         
