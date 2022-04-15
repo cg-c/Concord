@@ -1,8 +1,7 @@
 import React from 'react';
-import { createContext, Profiler, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../firebase/firebaseConfig';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import { collection, addDoc, setDoc, doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
@@ -28,16 +27,16 @@ export function UserAuthContextProvider({children}) {
             const docRef = doc(db, "User", user.email)
             getDoc(docRef).then((docSnap) => {
                 if(docSnap.exists()) {
-                updateDoc(docRef, {
-                    teacher : teachbool
-                })
+                    updateDoc(docRef, {
+                        teacher : teachbool
+                    });
                 }
                 else{
-                setDoc(docRef, {
-                    fullName: user.displayName,
-                    email: user.email,
-                    teacher: teachbool
-                });
+                    setDoc(docRef, {
+                        fullName: user.displayName,
+                        email: user.email,
+                        teacher: teachbool
+                    });
             }});
         }
         catch(e) {

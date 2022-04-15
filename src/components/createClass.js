@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { TextField, DialogActions } from '@mui/material';
+import { TextField } from '@mui/material';
 import { Button } from 'react-bootstrap';
 import {v4 as uuidV4} from 'uuid';
-import { auth, db } from '../firebase/firebaseConfig';
-import firebase from 'firebase/app';
+import {  db } from '../firebase/firebaseConfig';
 import 'firebase/auth';
-import { collection, updateDoc, addDoc, setDoc, doc, arrayUnion } from "firebase/firestore"; 
+import {  updateDoc, setDoc, doc, arrayUnion } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/userAuthContext';
 

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Row, Col, ThemeProvider } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { StyledContainer } from './components/styles/Container.styled';
 import Login from './components/googleLogin';
 import Course from './components/course';
