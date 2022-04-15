@@ -6,6 +6,8 @@ import Course from './components/course';
 import ProtectedRoute from './components/protected';
 import CreateUser from './components/option';
 import App from './components/video';
+import CreateClass from './components/createClass';
+import JoinClass from './components/joinClass';
 import { UserAuthContextProvider } from './context/userAuthContext';
 
 function SignInRoute() {
@@ -32,6 +34,18 @@ function SignInRoute() {
                             <Route path="/video" element={
                                 <ProtectedRoute>
                                     <App />
+                                </ProtectedRoute>
+                            } />
+
+                            <Route path="/createCourse" element={
+                                <ProtectedRoute>
+                                    <CreateClass />
+                                </ProtectedRoute>
+                            } />
+
+                            <Route path="/joinCourse" element={
+                                <ProtectedRoute>
+                                    <JoinClass />
                                 </ProtectedRoute>
                             } />
 

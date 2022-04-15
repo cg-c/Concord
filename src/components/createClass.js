@@ -1,21 +1,44 @@
 import React, { useState } from 'react';
-import { TextField, DialogActions } from '@matierial-ui/core';
+import { TextField, DialogActions } from '@mui/material';
 import { Button } from 'react-bootstrap';
+import {v4 as uuidV4} from 'uuid';
 import { auth, db } from '../firebase/firebaseConfig';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { collection, addDoc, setDoc, doc } from "firebase/firestore"; 
+import { collection, updateDoc, addDoc, setDoc, doc, arrayUnion } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
+import { useUserAuth } from '../context/userAuthContext';
+
 
 // https://www.youtube.com/watch?v=Jppu8FCEoOg around 1 hr 20 min in
 
+// Style the input https://mui.com/material-ui/react-text-field/
 
-const createClass = () => {
+
+const CreateClass = () => {
 
     const [className, setClassName] = useState('');
+    const {user} = useUserAuth();
+    const navigate = useNavigate();
 
     const addClass = (e) => {
-        e.preventDeafult();
+        e.preventDefault();
+        const id = uuidV4();
+
+        const docRef = doc(db, "Course", id)
+            setDoc(docRef, {
+                teachers: user.email,
+                className: className,
+                courseCode: id
+            })
+        .then(() => {
+            const docRef = doc(db, "User", user.email)
+            updateDoc(docRef, {
+                courses: arrayUnion(id)
+            });
+
+            navigate("/course");
+        });
     }
 
     return (
@@ -24,25 +47,24 @@ const createClass = () => {
                 Create a class
             </p>
 
-            <div className='form__inputs'>
+            <div>
                 <TextField 
-                    id='filled-basic' 
-                    label='Class Name (required)' 
-                    className='form__input' 
-                    varient='filled' 
+                    id='standard-required' 
+                    label='Class Name' 
+                    varient='standard' 
                     value={className}
                     onChange={(e) => setClassName(e.target.value)}
                 />
             </div>
 
-            <DialogActions>
+
                 <Button onClick={addClass}>
                     Create
                 </Button>
-            </DialogActions>
+
 
         </div>
     );
 } 
 
-export default createClass;
+export default CreateClass;

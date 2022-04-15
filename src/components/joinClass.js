@@ -1,8 +1,8 @@
 import React from 'react';
-import { TextField, DialogActions } from '@matierial-ui/core';
+import { TextField, DialogActions } from '@mui/material';
 import { Button } from 'react-bootstrap';
 
-const joinClass = () => {
+const JoinClass = () => {
 
 
 
@@ -15,7 +15,11 @@ const joinClass = () => {
                 Enter your course code to join a class:
             </p>
 
-            <TextField label='Course Code' />
+            <TextField 
+                id='standard-required'  
+                varient='standard' 
+                label='Course Code' 
+            />
 
             <DialogActions>
                 <Button>
@@ -27,4 +31,4 @@ const joinClass = () => {
     );
 }
 
-export default joinClass;
+export default JoinClass;
