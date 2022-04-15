@@ -4,7 +4,7 @@ import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from
 import { auth, db } from '../firebase/firebaseConfig';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { collection, addDoc, setDoc, doc } from "firebase/firestore"; 
+import { collection, addDoc, setDoc, doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
 
 const userAuthContext = createContext();
@@ -26,11 +26,19 @@ export function UserAuthContextProvider({children}) {
 
         try {
             const docRef = doc(db, "User", user.email)
-            setDoc(docRef, {
-                fullName: user.displayName,
-                email: user.email,
-                teacher: teachbool
-            });
+            getDoc(docRef).then((docSnap) => {
+                if(docSnap.exists()) {
+                updateDoc(docRef, {
+                    teacher : teachbool
+                })
+                }
+                else{
+                setDoc(docRef, {
+                    fullName: user.displayName,
+                    email: user.email,
+                    teacher: teachbool
+                });
+            }});
         }
         catch(e) {
             console.log(e.message);

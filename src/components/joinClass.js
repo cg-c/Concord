@@ -12,11 +12,11 @@ const JoinClass = () => {
     const {user} = useUserAuth();
     const navigate = useNavigate();
 
-    async function joinClass(e){
+    function joinClass(e){
         e.preventDefault();
         const docRef = doc(db, "Course", courseId);
-        await getDoc(docRef).then((documentSnapshot) => {
-            if(documentSnapshot.exists){
+        getDoc(docRef).then((documentSnapshot) => {
+            if(documentSnapshot.exists()){
                 try{
                     updateDoc(docRef, {
                         students: arrayUnion(user.email)
