@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../firebase/firebaseConfig';
 import 'firebase/auth';
-import { collection, addDoc, setDoc, doc, getDoc, updateDoc } from "firebase/firestore"; 
+import { setDoc, doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
 
 const userAuthContext = createContext();
