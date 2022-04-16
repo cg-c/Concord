@@ -20,7 +20,6 @@ const theme = {
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      {/* Sidebar not here - only once signed in */}
       <Router>
         <SignInRoute />
       </Router>

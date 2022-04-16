@@ -4,5 +4,5 @@ export const FooterLogo = styled.footer`
     position: fixed;
     bottom: 20px;
     justify-content: center;
-    width: 250px;
+    width: 150px;
 `;

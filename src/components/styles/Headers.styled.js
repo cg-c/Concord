@@ -6,8 +6,16 @@ export const PageHeader = styled.h1`
     font-size: 50px;
     font-family: ${props => props.theme.headingFont};
     margin-top: 50px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     letter-spacing: 2px;
     justify-content: center;
     align-items: center;
+`;
+
+export const ClassHeader = styled(PageHeader)`
+    margin: 20px;
+    margin-top: 70px;
+    font-size: 42px;
+    justify-content: left;
+    align-items: start;
 `;

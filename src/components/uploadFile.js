@@ -4,6 +4,7 @@ import {collection, addDoc, query, getDocs, where} from "firebase/firestore";
 import {ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import 'react-keyed-file-browser/dist/react-keyed-file-browser.css';
 import 'font-awesome/css/font-awesome.min.css'
+import { StyledFileUpload } from './styles/FileUpload.styled';
 import FileBrowser, {Icons} from 'react-keyed-file-browser'
 import {getAuth} from "firebase/auth"
 
@@ -85,16 +86,18 @@ const FileUpload = () =>{
     }
 
     return (
-        <>
-        <div className="container">
-          <p></p>
-          <input type="file" class="file" id="attachment" onChange={setFiles} multiple/>
-        </div>
-        <div><FileBrowser 
-            files = {fileArray}
-            icons = {Icons.FontAwesome(4)}
-        /></div> 
-        </>
+      <>
+        <StyledFileUpload>
+          <div className="container" style={{backgroundColor: "#cbd2d0"}}>
+            <p></p>
+            <input type="file" className="file" id="attachment" onChange={setFiles} multiple/>
+          </div>
+          <div style={{backgroundColor: "#cbd2d0"}}><FileBrowser 
+              files = {fileArray}
+              icons = {Icons.FontAwesome(4)}
+          /></div> 
+        </StyledFileUpload>
+      </>
     );
 };
 

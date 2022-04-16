@@ -5,7 +5,7 @@ import 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import GoogleButton from 'react-google-button';
-import { PageHeader } from './styles/PageHeader.styled';
+import { PageHeader } from './styles/Headers.styled';
 import { FooterLogo } from './styles/FooterLogo.styled';
 import { useUserAuth } from '../context/userAuthContext';
 
@@ -16,11 +16,12 @@ const Login = () => {
     const navigate = useNavigate();
     const buttonStyle = {
       display: "flex",
-      backgroundColor: "#fff",
+      backgroundColor: "#ffffff",
       color: "#3d3b40",
       borderRadius: "8px",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
+      
     }
 
     const handleGoogleSignIn = async (e) => {
