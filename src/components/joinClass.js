@@ -28,7 +28,7 @@ const JoinClass = () => {
                     })
                     
                     // may have to change this to /class/?...
-                    navigate(`/course/?courseId=${courseId}`);
+                    navigate(`/courses/?courseId=${courseId}`);
                 }
                 catch(error){
                     console.log(error);

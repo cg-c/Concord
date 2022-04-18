@@ -23,26 +23,6 @@ const Courses = () => {
         }
     }
 
-
-
-    /* function greetUser() {
-        try {
-        const docRef = doc(db, 'User', user.email);     //gets current user's database object
-        getDoc(docRef).then(docSnap => {
-            if (docSnap.exists()) {
-                document.getElementById('Greetings').textContent = ("Hello " + docSnap.data().fullName);  //set greeting header to include user's name
-            } else {
-                console.log("No such document!");
-            }
-        });
-        }
-        catch(err) {
-            console.log(err.message)
-        }
-    }
-
-    greetUser(); */
-
     return (
         <>
             {/* Move this V and greeting function to dedicated landing page 
@@ -53,32 +33,29 @@ const Courses = () => {
 
             <CourseContainer>
                 
-                <CourseButton to="/class" >
+                <CourseButton to="/courses/07498504-52c2-4ec1-a615-767f51b50c78" >
                     {/* parse course names/number of courses in function on this page
                         edit URL to be /courses/${courseId} for specific class IDs*/}
-                    Biology
+                    Software
                 </CourseButton>
-                <CourseButton to="/class">
+                <CourseButton to="/courses/87a284c6-b2d2-4fd7-9e0c-e75951ec48ed">
                     Chemistry II
                 </CourseButton>
-                <CourseButton to="/class">
+                <CourseButton to="/courses/d1761db2-1d25-48eb-a51b-e54d2a071b55">
                     Calc I
                 </CourseButton>
-                <CourseButton to="/class">
+                <CourseButton to="/courses/17e26ffb-34cf-494b-96f6-70805c0463aa">
                     What is the good life?
                 </CourseButton>
-                <CourseButton to="/class">
+                <CourseButton to="/courses/8b8e6e88-a235-4478-9ca9-2bcf29f034f0">
                     Pottery
                 </CourseButton>
-                {/* <CourseButton to="class">
-                    Course 6
-                </CourseButton> */}
             </CourseContainer>
 
             
 
             <FooterLogo>
-                <img src="LongLogo.png"></img>
+                <img src="../LongLogo.png"></img>
             </FooterLogo>
         </>
     )

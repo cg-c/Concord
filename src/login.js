@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import { StyledContainer } from './components/styles/Container.styled';
 import Login from './components/googleLogin';
+import Class from './components/class';
 import Courses from './components/courses';
 import LandingPage from './components/landingPage'
-import StudentClass from './components/studentClass';
+import StudentClass from './components/class';
 import ProtectedRoute from './components/protected';
 import CreateUser from './components/option';
 import App from './components/video';
@@ -33,6 +34,14 @@ function SignInRoute() {
                             <Courses />
                         </ProtectedRoute>
                     } />
+
+                    <Route path="/courses/:courseCode" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <Class />
+                        </ProtectedRoute>
+                    } />
+
                     <Route path="/createUser" element={
                         <ProtectedRoute>
                             <CreateUser />
@@ -46,10 +55,10 @@ function SignInRoute() {
                         </ProtectedRoute>
                     } />
 
-                    <Route path="/class" element={
+                    <Route path="/video/:roomCode" element={
                         <ProtectedRoute>
                             <MyNavbar />
-                            <StudentClass />
+                            <App />
                         </ProtectedRoute>
                     } />
 

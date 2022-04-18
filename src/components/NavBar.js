@@ -41,7 +41,7 @@ export const MyNavbar = () => {
         <StyledNavbar>
             <Container>
                 <Navbar.Brand onClick={handleNavHome} className="justify-content-start">
-                    <img src="LongLogoDark.svg"
+                    <img src="../LongLogoDark.svg"
                         width="150"
                         height="50" />
                     
