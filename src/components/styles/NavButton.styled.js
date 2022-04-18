@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 
 export const NavButton = styled(Button)`
     display: flex;
@@ -15,4 +15,13 @@ export const NavButton = styled(Button)`
         border: 1px solid white;
         box-shadow: 5px 5px black;
     }
+`;
+
+export const StyledNavbar = styled(Navbar)`
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    width: 100vw;
+    height: auto;
+    background-color: ${ p => p.theme.secondary };
 `;

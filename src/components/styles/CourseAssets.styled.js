@@ -16,6 +16,8 @@ export const CourseContainer = styled(Container)`
 export const CourseButton = styled(Link)`
     display: flex;
     background-color: ${p => p.theme.secondary};
+    color: ${ p => p.theme.primary};
+    text-decoration: none;
     font-family: ${p => p.theme.headingFont};
     border: solid 2px white;
     border-radius: 5px;

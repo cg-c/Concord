@@ -8,6 +8,7 @@ import { CourseContainer, CourseButton } from './styles/CourseAssets.styled';
 import { db } from '../firebase/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import { NavButton } from './styles/NavButton.styled';
+import { MyNavbar } from './NavBar';
 
 const Course = () => {
     const { user, logOut } = useUserAuth();
@@ -44,11 +45,6 @@ const Course = () => {
 
     return (
         <>
-            <div>
-                <NavButton onClick={handleLogOut}>
-                    Log Out
-                </NavButton>
-            </div>
             {/* Move this V and greeting function to dedicated landing page 
             <PageHeader id = "Greetings"/>*/}
             <PageHeader>

@@ -6,41 +6,59 @@ import StudentClass from './components/studentClass';
 import ProtectedRoute from './components/protected';
 import CreateUser from './components/option';
 import App from './components/video';
+import { StyledNavbar } from './components/styles/NavButton.styled';
 import { UserAuthContextProvider } from './context/userAuthContext';
+import { MyNavbar } from './components/NavBar';
+import FileUpload from './components/uploadFile';
 
 function SignInRoute() {
     return (
         <StyledContainer>
-                    <UserAuthContextProvider>
-                        <Routes>
-                            <Route path="/" element={<Login />} />
+            <UserAuthContextProvider>
+                <Routes>
+                    <Route path="/" element={<Login />} />
 
-                            <Route path="/courses" element={
-                                <ProtectedRoute>
-                                    <Course />
-                                </ProtectedRoute>
-                            }/>
-                            <Route path="/createUser" element={
-                                <ProtectedRoute>
-                                    <CreateUser />
-                                </ProtectedRoute>
-                            } />
+                    <Route path="/courses" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <Course />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/createUser" element={
+                        <ProtectedRoute>
+                            <CreateUser />
+                        </ProtectedRoute>
+                    } />
 
-                            <Route path="/video" element={
-                                <ProtectedRoute>
-                                    <App />
-                                </ProtectedRoute>
-                            } />
+                    <Route path="/video" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <App />
+                        </ProtectedRoute>
+                    } />
 
-                            <Route path="/class" element={
-                                <ProtectedRoute>
-                                    <StudentClass />
-                                </ProtectedRoute>
-                            } />
-                                
+                    <Route path="/class" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <StudentClass />
+                        </ProtectedRoute>
+                    } />
+                    
+                    <Route path="/files" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <FileUpload />
+                        </ProtectedRoute>
+                    } />
 
-                        </Routes>
-                    </UserAuthContextProvider>
+                    <Route path ='*' element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                        </ProtectedRoute>
+                    } />
+
+                </Routes>
+            </UserAuthContextProvider>
         </StyledContainer>
     );
 }
