@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/userAuthContext';
 import { updateDoc, getDoc, doc, arrayUnion } from "firebase/firestore"; 
 import {db} from "../firebase/firebaseConfig";
+import { StyledForm } from './styles/Form.styled';
 
 const JoinClass = () => {
 
@@ -25,7 +26,9 @@ const JoinClass = () => {
                     updateDoc(userRef, {
                         joinedCourses : arrayUnion(documentSnapshot.data().courseCode)
                     })
-                    navigate(`/course/?courseId=${courseId}`);
+                    
+                    // may have to change this to /class/?...
+                    navigate(`/courses/?courseId=${courseId}`);
                 }
                 catch(error){
                     console.log(error);
@@ -40,6 +43,7 @@ const JoinClass = () => {
 
 
     return (
+        <StyledForm>
         <div className='form'>
             <p>
                 Enter a course ID to join:
@@ -61,6 +65,7 @@ const JoinClass = () => {
 
 
         </div>
+        </StyledForm>
     );
 }
 
