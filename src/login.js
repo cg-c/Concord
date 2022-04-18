@@ -1,12 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 import { StyledContainer } from './components/styles/Container.styled';
 import Login from './components/googleLogin';
-import Course from './components/courses';
+import Courses from './components/courses';
+import LandingPage from './components/landingPage'
 import StudentClass from './components/studentClass';
 import ProtectedRoute from './components/protected';
 import CreateUser from './components/option';
 import App from './components/video';
-import { StyledNavbar } from './components/styles/NavButton.styled';
+import CreateClass from './components/createClass';
+import JoinClass from './components/joinClass';
 import { UserAuthContextProvider } from './context/userAuthContext';
 import { MyNavbar } from './components/NavBar';
 import FileUpload from './components/uploadFile';
@@ -18,10 +20,17 @@ function SignInRoute() {
                 <Routes>
                     <Route path="/" element={<Login />} />
 
+                    <Route path="/home" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <LandingPage />
+                        </ProtectedRoute>
+                    } />
+
                     <Route path="/courses" element={
                         <ProtectedRoute>
                             <MyNavbar />
-                            <Course />
+                            <Courses />
                         </ProtectedRoute>
                     } />
                     <Route path="/createUser" element={
@@ -43,7 +52,7 @@ function SignInRoute() {
                             <StudentClass />
                         </ProtectedRoute>
                     } />
-                    
+
                     <Route path="/files" element={
                         <ProtectedRoute>
                             <MyNavbar />
@@ -51,7 +60,21 @@ function SignInRoute() {
                         </ProtectedRoute>
                     } />
 
-                    <Route path ='*' element={
+                    <Route path="/createCourse" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <CreateClass />
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path="/joinCourse" element={
+                        <ProtectedRoute>
+                            <MyNavbar />
+                            <JoinClass />
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path='*' element={
                         <ProtectedRoute>
                             <MyNavbar />
                         </ProtectedRoute>

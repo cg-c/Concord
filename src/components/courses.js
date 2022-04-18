@@ -10,7 +10,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { NavButton } from './styles/NavButton.styled';
 import { MyNavbar } from './NavBar';
 
-const Course = () => {
+const Courses = () => {
     const { user, logOut } = useUserAuth();
     const navigate = useNavigate();
 
@@ -56,19 +56,19 @@ const Course = () => {
                 <CourseButton to="/class" >
                     {/* parse course names/number of courses in function on this page
                         edit URL to be /courses/${courseId} for specific class IDs*/}
-                    Course 1
+                    Biology
                 </CourseButton>
                 <CourseButton to="/class">
-                    Course 2
+                    Chemistry II
                 </CourseButton>
                 <CourseButton to="/class">
-                    Course 3
+                    Calc I
                 </CourseButton>
                 <CourseButton to="/class">
-                    Course 4
+                    What is the good life?
                 </CourseButton>
                 <CourseButton to="/class">
-                    Course 5
+                    Pottery
                 </CourseButton>
                 {/* <CourseButton to="class">
                     Course 6
@@ -85,4 +85,4 @@ const Course = () => {
 
 }
 
-export default Course;
+export default Courses;

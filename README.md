@@ -19,6 +19,10 @@ the ion-sfu should be up and running
 # References
 We used these tutorials to get our features set up:
 React Firebase Authentication Crash Course With Context API and Protected Routes For Beginners
+Styled Components Crash Course & Project
+Theming React Apps With Styled Components
+React Router V6 Tutorial - Routes, Redirecting, UseNavigate, UseParams...
+Let's create Google Classroom Clone with React
 
 ## thats it have fun!!
 
