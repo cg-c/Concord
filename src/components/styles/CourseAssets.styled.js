@@ -17,6 +17,7 @@ export const CourseButton = styled(Link)`
     display: flex;
     background-color: ${p => p.theme.secondary};
     font-family: ${p => p.theme.headingFont};
+    border: solid 2px white;
     border-radius: 5px;
     margin: 30px 4%;
     height: 30%;

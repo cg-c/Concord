@@ -19,12 +19,7 @@ function SignInRoute() {
                                 <ProtectedRoute>
                                     <Course />
                                 </ProtectedRoute>
-                            }>
-                                <Route path="class" element={
-                                        <StudentClass />
-                                } />
-                            </Route>
-
+                            }/>
                             <Route path="/createUser" element={
                                 <ProtectedRoute>
                                     <CreateUser />

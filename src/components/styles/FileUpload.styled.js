@@ -5,8 +5,8 @@ export const StyledFileUpload = styled.div`
     flex-direction: column;
     border: solid 2px white;
     border-radius: 8px;
-    margin: 100px;
+    margin-bottom: 100px;
     margin-top: 50px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 `;

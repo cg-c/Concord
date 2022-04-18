@@ -57,21 +57,21 @@ const Course = () => {
 
             <CourseContainer>
                 
-                <CourseButton to="class" >
+                <CourseButton to="/class" >
                     {/* parse course names/number of courses in function on this page
                         edit URL to be /courses/${courseId} for specific class IDs*/}
                     Course 1
                 </CourseButton>
-                <CourseButton to="class">
+                <CourseButton to="/class">
                     Course 2
                 </CourseButton>
-                <CourseButton to="class">
+                <CourseButton to="/class">
                     Course 3
                 </CourseButton>
-                <CourseButton to="class">
+                <CourseButton to="/class">
                     Course 4
                 </CourseButton>
-                <CourseButton to="class">
+                <CourseButton to="/class">
                     Course 5
                 </CourseButton>
                 {/* <CourseButton to="class">
@@ -84,7 +84,6 @@ const Course = () => {
             <FooterLogo>
                 <img src="LongLogo.png"></img>
             </FooterLogo>
-            <Outlet />
         </>
     )
 
