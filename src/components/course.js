@@ -1,7 +1,7 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { Button } from 'react-bootstrap';
 import { useUserAuth } from '../context/userAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PageHeader } from './styles/PageHeader.styled';
 import { db } from '../firebase/firebaseConfig';
 import { doc, getDoc} from 'firebase/firestore';
@@ -10,6 +10,9 @@ import FileUpload from './uploadFile'
 const Course = () => {
     const {user, logOut} = useUserAuth();
     const navigate = useNavigate();
+    const { courseCode } = useParams();
+    const [teacher, setTeacher] = useState('');
+    var isTeacher = 'true';
 
     const handleLogOut = async() => {
         try {
@@ -21,17 +24,34 @@ const Course = () => {
     }
 
     const handleNavVideo = async() => {
-        navigate("/video");
+        navigate(`/video/${courseCode}`);
     }
 
-    function greetUser(){
-        const docRef = doc(db, 'User', user.email);     //gets current user's database object
-        getDoc(docRef).then(docSnap => {
+
+async function greetUser(){
+        const docRef = doc(db, 'User', user.email); //gets current user's database object
+        await getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
             document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName);  //set greeting header to include user's name
+            setTeacher(docSnap.data().teacher);
           } else {
             console.log("No such document!");
         }});
+    }
+
+    function setCourse(){
+        const docRef = doc(db, 'Course', courseCode);
+        getDoc(docRef).then(docSnap => {
+            if(docSnap.exists()){
+                document.getElementById('Course').innerHTML = (docSnap.data().className);
+                const profRef = doc(db, 'User', docSnap.data().teachers);
+                getDoc(profRef).then(profSnap => {
+                    if(profSnap.exists()){
+                    document.getElementById('Professor').innerHTML = ("Professor: " + profSnap.data().fullName);
+                    }
+                })
+            }
+        })
     }
 
     const handleCreateClass = async() => {
@@ -43,35 +63,42 @@ const Course = () => {
     }
 
     greetUser();
+    
+    setCourse();
 
     return (
         <>
-            <PageHeader id = "Greetings" style={{fontSize: '50px'}}>
-                Hello 
+            <PageHeader id = "Course" style={{fontSize: '50px'}}>
+                Course 
             </PageHeader>
+
+            <div id = "Professor">Professor</div>
+
+            <div id = "Greetings">Hello </div>
 
             <div>
                 <Button onClick={handleLogOut}>
                     Log Out
                 </Button>
             </div>
-
-            <div>
+            {console.log(isTeacher)}
+            { (teacher === "true") ? (
+            <div id = "teachFunctionality">
                 <Button onClick={handleCreateClass}>
-                    Create Course
+                        Create Course
                 </Button>
-            </div>
+                <br></br>
+                <Button onClick={handleNavVideo}>
+                    Launch Video
+                </Button>
 
-            <div>
-                <Button onClick={handleAddClass}>
+                <FileUpload /> 
+            </div>) : (teacher === "false") ? (
+            <div id = "studentFunctionality">
+                <Button id = "joinCourse" onClick={handleAddClass}>
                     Join Course
                 </Button>
-            </div>
-
-            <Button onClick={handleNavVideo}>
-                Launch Video
-            </Button>
-            <FileUpload />
+            </div> )  : null }
         </>
     )
 

@@ -15,13 +15,13 @@ const CreateUser = () => {
             var teachbool = "false";
 
             await saveUser(teachbool);
-            navigate("/course");
+            navigate("/course/07498504-52c2-4ec1-a615-767f51b50c78");
         }
         else if (document.getElementById("teacher").checked) {
             var teachbool = "true";
 
             await saveUser(teachbool);
-            navigate("/course");
+            navigate("/course/07498504-52c2-4ec1-a615-767f51b50c78");
         }
         else {
             console.log("Error!");
