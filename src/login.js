@@ -19,7 +19,7 @@ function SignInRoute() {
                         <Routes>
                             <Route path="/" element={<Login />} />
 
-                            <Route path="/course" element={
+                            <Route path="/course/:courseCode" element={
                                 <ProtectedRoute>
                                     <Course />
                                 </ProtectedRoute>
@@ -31,7 +31,7 @@ function SignInRoute() {
                                 </ProtectedRoute>
                             } />
 
-                            <Route path="/video" element={
+                            <Route path="/video/:roomCode" element={
                                 <ProtectedRoute>
                                     <App />
                                 </ProtectedRoute>
