@@ -27,6 +27,17 @@ const Course = () => {
         navigate(`/video/${courseCode}`);
     }
 
+    async function greetUser(){
+        const docRef = doc(db, 'User', user.email);
+        await getDoc(docRef).then(docSnap => {
+            if (docSnap.exists()) {
+            document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName); 
+            setTeacher(docSnap.data().teacher);
+          } else {
+            console.log("No such document!");
+        }});
+    }
+
     function setCourse(){
         const docRef = doc(db, 'Course', courseCode);
         getDoc(docRef).then(docSnap => {
@@ -40,17 +51,6 @@ const Course = () => {
                 })
             }
         })
-    }
-
-    async function greetUser(){
-        const docRef = doc(db, 'User', user.email);
-        await getDoc(docRef).then(docSnap => {
-            if (docSnap.exists()) {
-            document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName); 
-            setTeacher(docSnap.data().teacher);
-          } else {
-            console.log("No such document!");
-        }});
     }
 
     const handleCreateClass = async() => {
