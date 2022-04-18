@@ -27,4 +27,4 @@ Let's create Google Classroom Clone with React
 ## thats it have fun!!
 
 ## Updated Login Screen: 
-<img src="https://user-images.githubusercontent.com/73512286/162826758-2099c78f-bb92-4ace-94ff-467e8b757dda.png" height="500">
+To be updated... lol

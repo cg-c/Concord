@@ -7,6 +7,7 @@ import 'firebase/auth';
 import {  updateDoc, setDoc, doc, arrayUnion } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/userAuthContext';
+import { StyledForm } from './styles/Form.styled';
 
 
 // https://www.youtube.com/watch?v=Jppu8FCEoOg around 1 hr 20 min in
@@ -36,11 +37,12 @@ const CreateClass = () => {
                 courses: arrayUnion(id)
             });
 
-            navigate("/course");
+            navigate("/courses");
         });
     }
 
     return (
+        <StyledForm>
         <div className='form'>
             <p>
                 Create a class
@@ -62,6 +64,7 @@ const CreateClass = () => {
 
 
         </div>
+        </StyledForm>
     );
 } 
 
