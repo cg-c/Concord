@@ -1,7 +1,6 @@
-import React, {useMemo, useCallback} from 'react';
+import React from 'react';
 import {storage, db} from "../firebase/firebaseConfig";
 import {collection, addDoc, query, getDocs, where} from "firebase/firestore"; 
-import {useDropzone} from "react-dropzone";
 import {ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import 'react-keyed-file-browser/dist/react-keyed-file-browser.css';
 import 'font-awesome/css/font-awesome.min.css'
@@ -9,70 +8,41 @@ import FileBrowser, {Icons} from 'react-keyed-file-browser'
 import {getAuth} from "firebase/auth"
 
 //style and some boilerplate taken from the live examples on https://react-dropzone.js.org/
-
-const baseStyle = {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '20px',
-    borderWidth: 2,
-    borderRadius: 2,
-    borderColor: '#eeeeee',
-    borderStyle: 'dashed',
-    backgroundColor: '#fafafa',
-    color: '#bdbdbd',
-    outline: 'none',
-    transition: 'border .24s ease-in-out'
-  };
-  
-  const focusedStyle = {
-    borderColor: '#2196f3'
-  };
-  
-  const acceptStyle = {
-    borderColor: '#00e676'
-  };
-  
-  const rejectStyle = {
-    borderColor: '#ff1744'
-  };
-  
-
-
 const FileUpload = () =>{
 
     const auth = getAuth();
     const user = auth.currentUser;
+    //gets currently signed in user
+
 
     const generateFiles = () => {
-    
-        var files = [];
-      
+      var files = [];
         function addFiletoFiles(name, date, size){
           files.push({key : name, modified : date, size : size});
         }
       
-          const q = query(collection(db, "files"), where('owner', '==', user.email));
+          const q = query(collection(db, "files"), where('owner', '==', user.email));   //gets all files logged in user uploaded
             getDocs(q).then((querySnapshot) => {    
               querySnapshot.forEach((doc) => {
                 if(!querySnapshot.empty){
-                  addFiletoFiles(doc.data().name, doc.data().date, doc.data().size);
+                  addFiletoFiles(doc.data().name, doc.data().date, doc.data().size);    //adds each file to array of all user files
                 }
             });
           });
           return files;
         }
 
+        var fileArray = generateFiles();
+
     const handleUpload = (file) => {
         try{
-            const blobURL = URL.createObjectURL(file);
-            const blob =  fetch(blobURL).then((r) => r.blob());
-            const storageRef = ref(storage, `${user.email}/${file.name}`);
-            const uploadTask = uploadBytesResumable(storageRef, blob);
+            const blobURL = URL.createObjectURL(file);  
+            const blob =  fetch(blobURL).then((r) => r.blob()); //get data from uploaded file
+            const storageRef = ref(storage, `${user.email}/${file.name}`);  //set storage path to current user's directory
+            const uploadTask = uploadBytesResumable(storageRef, blob);      //uploads file
             uploadTask.on('state_changed', 
-                (snapshot) =>{},
-                (error) => { console.log(error)},
+                (snapshot) =>{},    //do nothing while uplaoding
+                (error) => { console.log(error)},   //log error on error
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then(url => {
                         try{
@@ -85,63 +55,43 @@ const FileUpload = () =>{
                                 owner : user.email
                             })
                             console.log("Document written with ID: ", fileRef.id);
+                            fileArray = generateFiles();
                         } catch (e) {
                             console.error("Error adding document: ", e);
                         }
                     });         
                 });
-            
+                //once upload is compelte, add matching object to relational database with file info, owner, and download url
         }
         catch(error){
             throw console.log(error);
         }
     };
 
-    const onDrop = useCallback(async (acceptedFiles) => {
+   /* const onDrop = useCallback(async (acceptedFiles) => {
         try{
-            await acceptedFiles.forEach(handleUpload);
+            await acceptedFiles.forEach(handleUpload);  //for each file that's accepted, run through upload process
         }
         catch (error) {
             throw console.log(error);
         }
-    }, [])
+    }, []) */
 
-    const {
-        getRootProps,
-        getInputProps,
-        isFocused,
-        open,
-        isDragAccept,
-        isDragReject,
-        acceptedFiles
-    } = useDropzone({onDrop, noClick : true, noKeyboard : true, noDrag : true});
-    
-    const style = useMemo(() => ({
-        ...baseStyle,
-        ...(isFocused ? focusedStyle : {}),
-        ...(isDragAccept ? acceptStyle : {}),
-        ...(isDragReject ? rejectStyle : {})
-    }), [
-        isFocused,
-        isDragAccept,
-        isDragReject
-    ]);
-    
-    
+    function setFiles(event){
+      const fileList = event.target.files;
+      for(let i = 0; i < fileList.length; i++){
+        handleUpload(fileList[i]);
+      } //fileList doesn't like foreach so we do it the old fashioned way
+    }
 
     return (
         <>
         <div className="container">
-           {/* <div {...getRootProps({style})}>  */}
-                <input {...getInputProps()} />
-                <p></p>
-                <button className="bg-blue-500 px-4 py-2 text-white rounded-lg mr-5" type="button" onClick={open}>
-                Upload Files
-                </button>
-          {/* </div> */}
+          <p></p>
+          <input type="file" class="file" id="attachment" onChange={setFiles} multiple/>
         </div>
         <div><FileBrowser 
-            files = {generateFiles()}
+            files = {fileArray}
             icons = {Icons.FontAwesome(4)}
         /></div> 
         </>
