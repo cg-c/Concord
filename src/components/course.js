@@ -27,11 +27,12 @@ const Course = () => {
         navigate(`/video/${courseCode}`);
     }
 
-    async function greetUser(){
-        const docRef = doc(db, 'User', user.email);
+
+async function greetUser(){
+        const docRef = doc(db, 'User', user.email); //gets current user's database object
         await getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-            document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName); 
+            document.getElementById('Greetings').innerHTML = ("Hello " + docSnap.data().fullName);  //set greeting header to include user's name
             setTeacher(docSnap.data().teacher);
           } else {
             console.log("No such document!");
