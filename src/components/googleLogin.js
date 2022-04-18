@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { Link, useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import GoogleButton from 'react-google-button';
 import { PageHeader } from './styles/PageHeader.styled';
 import { FooterLogo } from './styles/FooterLogo.styled';

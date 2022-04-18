@@ -34,6 +34,14 @@ const Course = () => {
         }});
     }
 
+    const handleCreateClass = async() => {
+        navigate("/createCourse");
+    }
+
+    const handleAddClass = async() => {
+        navigate("/joinCourse");
+    }
+
     greetUser();
 
     return (
@@ -45,6 +53,18 @@ const Course = () => {
             <div>
                 <Button onClick={handleLogOut}>
                     Log Out
+                </Button>
+            </div>
+
+            <div>
+                <Button onClick={handleCreateClass}>
+                    Create Course
+                </Button>
+            </div>
+
+            <div>
+                <Button onClick={handleAddClass}>
+                    Join Course
                 </Button>
             </div>
 
