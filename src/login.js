@@ -13,6 +13,8 @@ import JoinClass from './components/joinClass';
 import { UserAuthContextProvider } from './context/userAuthContext';
 import { MyNavbar } from './components/NavBar';
 import FileUpload from './components/uploadFile';
+import CreateRoom from './components/CreateRoom';
+import Room from './components/Room';
 
 function SignInRoute() {
     return (
@@ -51,14 +53,14 @@ function SignInRoute() {
                     <Route path="/video" element={
                         <ProtectedRoute>
                             <MyNavbar />
-                            <App />
+                            <Room />
                         </ProtectedRoute>
                     } />
 
                     <Route path="/video/:roomCode" element={
                         <ProtectedRoute>
                             <MyNavbar />
-                            <App />
+                            <Room />
                         </ProtectedRoute>
                     } />
 
