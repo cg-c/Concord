@@ -21,7 +21,9 @@ function SignInRoute() {
         <StyledContainer>
             <UserAuthContextProvider>
                 <Routes>
-                    <Route path="/" element={<Login />} />
+                    <Route path="/" element={
+                        <Login />
+                    } />
 
                     <Route path="/home" element={
                         <ProtectedRoute>

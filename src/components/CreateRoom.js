@@ -3,7 +3,7 @@ import { v1 as uuid } from "uuid";
 
 const CreateRoom = (props) => {
     function create() {
-        const id = 'introtoswe'
+        const id = 'introtoswe';
         props.history.push(`/video/${id}`);
     }
 

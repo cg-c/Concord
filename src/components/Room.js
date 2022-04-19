@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
-import socket from "socket.io-client/lib/socket";
+import { useNavigate, useParams } from 'react-router-dom';
+//import socket from "socket.io-client/lib/socket";
 
 //checks to see if the user is a teacher
+const socket = io();
 let isTeacher = false;
 const URL = new URLSearchParams(window.location.search).get("isTeacher");
   console.log("url", URL);
@@ -13,7 +15,6 @@ const URL = new URLSearchParams(window.location.search).get("isTeacher");
   } else {
     isTeacher =false;
   }
-
 
 const Container = styled.div`
     display: flex;
@@ -99,7 +100,7 @@ const Room = (props) => {
     const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
-    const roomID = props.match.params.roomID;
+    const roomID = useParams();
 
 
     useEffect(() => {
@@ -115,18 +116,18 @@ const Room = (props) => {
                     peersRef.current.push({
                         peerID: userID,
                         peer,
-                    })
+                    });
                     peers.push(peer);
-                })
+                });
                 setPeers(peers);
-            })
+            });
 
             socketRef.current.on("user joined", payload => {
                 const peer = addPeer(payload.signal, payload.callerID, stream);
                 peersRef.current.push({
                     peerID: payload.callerID,
                     peer,
-                })
+                });
 
                 setPeers(users => [...users, peer]);
             });
@@ -158,7 +159,7 @@ const Room = (props) => {
 
         peer.on("signal", signal => {
             socketRef.current.emit("sending signal", { userToSignal, callerID, signal })
-        })
+        });
 
         return peer;
     }
@@ -168,11 +169,11 @@ const Room = (props) => {
             initiator: false,
             trickle: false,
             stream,
-        })
+        });
 
         peer.on("signal", signal => {
             socketRef.current.emit("returning signal", { signal, callerID })
-        })
+        });
 
         peer.signal(incomingSignal);
 
