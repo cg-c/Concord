@@ -4,17 +4,14 @@ Concord is built to increase student engagement by creating a seamless and featu
 # Working on 
 Allowing students to annotate on the slides and interact with lecturer-assigned activities
 
-## Install and Start ION-SFU instruction
-1. "git clone https://github.com/pion/ion-sfu.git" into any folder, not in the Concord folder
-2. Install go: https://go.dev/doc/install
-3. cd into that cloned repo
-4. build and run using "go build ./cmd/signal/json-rpc/main.go && ./main -c config.toml"
-the ion-sfu should be up and running
-
 # Install and Start the Client
-1. clone this repository
+1. cd into the cloned repo
 2. yarn
-3. yarn start
+3. Node server.js
+4. With that server still running, open up a new terminal, so you can execute the rest of these commands in the new terminal
+5. Navigate into client inside the cloned repo
+6. yarn
+7. yarn start
 
 # References
 We used these tutorials to get our features set up:
@@ -26,5 +23,3 @@ Let's create Google Classroom Clone with React
 
 ## thats it have fun!!
 
-## Updated Login Screen: 
-To be updated... lol
