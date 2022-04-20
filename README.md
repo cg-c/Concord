@@ -15,11 +15,11 @@ Allowing students to annotate on the slides and interact with lecturer-assigned 
 
 # References
 We used these tutorials to get our features set up:
-React Firebase Authentication Crash Course With Context API and Protected Routes For Beginners, 
-Styled Components Crash Course & Project, 
-Theming React Apps With Styled Components, 
-React Router V6 Tutorial - Routes, Redirecting, UseNavigate, UseParams..., 
-Let's create Google Classroom Clone with React
+1. React Firebase Authentication Crash Course With Context API and Protected Routes For Beginners
+2. Styled Components Crash Course & Project
+3. Theming React Apps With Styled Components
+4. React Router V6 Tutorial - Routes, Redirecting, UseNavigate, UseParams...
+5. Let's create Google Classroom Clone with React
 
 ## thats it have fun!!
 
