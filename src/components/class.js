@@ -94,6 +94,9 @@ const Class = () => {
                         <Button id="joinCourse" onClick={handleAddClass}>
                             Join Course
                         </Button>
+                    <Button onClick={handleNavVideo}>
+                        Join Video
+                    </Button>
                     </div>) : null}
         </>
     )

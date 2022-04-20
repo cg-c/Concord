@@ -17,14 +17,13 @@ const CreateUser = () => {
 
             await saveUser(teachbool);
              navigate("/home");
-            // navigate("/courses");
+
         }
         else if (document.getElementById("teacher").checked) {
             var teachbool = "true";
 
             await saveUser(teachbool);
             navigate("/home");
-            //navigate("/courses");
         }
         else {
             console.log("Error!");
